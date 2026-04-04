@@ -49,78 +49,143 @@
 ### 개념정리
 
 판다스는 표 형식의 자료를 dataframe객체로 읽어오는 몇 가지 기능을 제공한다 
+파일을 읽어오는 몇 가지 옵션이 존재. 판다스가 자동으로 열 이름을 생성하도록 하거나 직접 열 이름 저장 가능 
+가끔 고정된 구분자 없이 공백이나 
+다른 패턴으로 필드를 구분해놓은 경우가 있음 
+파싱 함수는 파일 형식에서 발생할 수 있는 매우 다양한 예외를 잘 처리할 수 있도록 많은 추가 인수를 가짐 
+예를 들어 skiprows를 이용해 행들을 건너뛸 수 있음. 
 
+판다스는 누락된 값을 NaN으로 출력한다 
+
+pandas.read_csv에는 다양한 기본 NA 값 표현 목록이 있지만 keep_default_na 옵션으로 
+비활성화할 수 있다.
+
+매우 큰 파일을 처리할 때 인수를 제대로 설정했는지 알아보기 위해 파일의 일부분만 읽기 가능 
+
+파일을 여러 고작으로 나눠 읽고 싶다면 chunksize 옵션으로 행 개수 설정 가능 
+
+읽어오기와 마찬가지로 데이터를 구분자로 구분한 형식으로 내보내는 것도 가능 
+
+csv 파일은 다양한 형태로 존재할 수 있고 다양한 구분자, 문자열을 둘러싸는 방법, 개행 문자 같은 것들은 csv. dialect를 상속받아 새로운 클래스에서 정의해서 새결 가능 
+
+JSON은 웹 브라우저와 다른 애플리케이션이 HTTP 요청으로 데이터를 보낼 때 널리 사용하는 표준파일 형식 중 하나 
+
+파이썬에서는 또한 HTML과 XML 형식의 데이터를 읽고 쓸 수 있는 라이브러리가 무척 많음 
+
+판다스에는 앞서 소개한 라이브러리를 사용해 자동으로 HTML파일을 파싱해 dataframe으로 변환하는 내장 함수 pandas.read_html존재 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="475" height="232" alt="image" src="https://github.com/user-attachments/assets/10948c29-dd07-465d-b214-e730cc3a50e2" />
+
+<img width="943" height="251" alt="image" src="https://github.com/user-attachments/assets/6d47916a-730d-4217-a1c4-c273fac7b008" />
 
 
 ## 2. 이진 데이터 형식
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+데이터를 이진 형식으로 저장하는 가장 간단한 방법은 파이썬 내장 pickle 모듈 이용하는 것 
 
+pickle 파일은 파이썬에서만 읽을 수 있고 pickle을 통해 파일로 저장된 객체는 파이썬 내장 pickle 모듈로 직접 부러오거나 pandas.read_pickle 함수를 이용해 불러올 수 있음 
+
+판다스는 pandas.excelfile클래스나 pandas.read_excel 함수를 통해 엑셀 2003 이후 버전으로 저장된 표 형식 데이터를 읽을 수 있다. 
+
+HDF5는 대량의 과학 계산용 배열 데이터를 저장하기 위해 고안된 훌륭한 파일 포맷이다. C 라 
+이브러리로도 존재하며 자바, 줄리 매트랩, 파이썬 같은 다양한 언어에서도 사용할 수 있 
+는 인터페이스를 제공한다. 
+
+HDFStore는 "fixed"와 "table" 두 가지 저장스키마를 지원한다
+
+put은 명시적인 store['obj2，] = frame 메서드지만 저장 형식을 지정하는 등의 다른 옵션 
+을 제공한다.
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="902" height="421" alt="image" src="https://github.com/user-attachments/assets/5e6d9ce2-c0e0-4ded-b6fa-74315df7342f" />
+<img width="833" height="416" alt="image" src="https://github.com/user-attachments/assets/3f1b8596-568c-4786-afe3-638f42190564" />
+
 
 
 ## 3. 웹 API와 함께 사용하기
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+데이터 피드를 JSON이나 여타 다른 형식으로 얻을 수 있는 공개 API를 제공하는 웹사이트 
+가 많다. 
 
+data의 각 항목은 댓글을 제외한 깃허브 이슈 페이지에서 찾을 수 있는 모든 데이터를 담고 있 
+다. 이 data 를 pandas. Data Frame 으로 바로 전딜해 관심이 있는 필드만 따로 추출할 수 있다.
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="812" height="302" alt="image" src="https://github.com/user-attachments/assets/b51250f7-decb-4c95-86a8-c25fa6269e34" />
 
 
 ## 4. 데이터베이스와 함께 사용하기
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+ 비즈니스 관점에서 대부분의 데이터가 텍스트 파일이나 엑셀 파일로 저장되기보다 SQL 
+기반의 관계형 데이터베이스(SQL 서버, PostgreSQL, MySQL)를 많이 사용하고 있다
+
+대부분의 파이썬 SQL 드라이버는 테이블에서 select 쿼리를 수행하면 튜플 리스트를 반환한다
+
+반환된 튜플 리스트를 DataFrame 생성자에 바로 전달해도 되지만, cursor의 description 
+속성에 있는 열 이름을 지정해야 한다. 
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="831" height="713" alt="image" src="https://github.com/user-attachments/assets/b9562dd4-963a-4987-8060-31b0cf18f608" />
+<img width="1457" height="107" alt="image" src="https://github.com/user-attachments/assets/b7a150ef-ee20-4aa2-bff8-9f6c11b02ee0" />
+
 
 
 ## 5. 누락된 데이터 처리하기
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+ float64 dtype을 가지는 데이터의 경우 판다스는 실숫값인 NaN으로 
+누락된 데이터를 표시한다
 
+isna 메서드는 값이 null인 경우 True를 가지는 불리언 Series를 반환한
+
+분석 애 플리케이션에서 NA 데이터는 데이터가 존재하지 않거나, 존재하더라도 데이터를 수집하는 과 
+정 등에서 검출되지 않았음을 의미한다. 
+. pandas.isna 같은 함수에서는 여러 번거로운 과정을 추상화해두었다. 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="818" height="258" alt="image" src="https://github.com/user-attachments/assets/7d4802dd-f8fb-48ef-ae58-d4eb657cd139" />
+
+<img width="912" height="207" alt="image" src="https://github.com/user-attachments/assets/af623630-d60d-4759-aea5-ae6f24a61a6c" />
 
 
 ## 6. 데이터 변형 
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+DataFrame의 duplicated 메서드는 각 행이 중복인지 아닌지를 알려주는 불리언 Series 객 
+체를 반환한다
+duplicated와 drop-duplicates는 기본적으로 처음 발견된 값을 유지한다. keep="last" 
+옵션을 넘기면 마지막으로 발견된 값을 반환한다.
+fiUna 메서드로 누락된 값을 채우는 작업은 일반적인 값 치환 작업이라고 볼 수 있다. 한 객체 안에서 값의 부분집합을 변경하는 데 map 메서드를 사용했지만, replace 메 
+서드는 동일한 작업을 더 간단하고 유연한 방식으로 제공한다. 
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
 
+
+<img width="718" height="378" alt="image" src="https://github.com/user-attachments/assets/0c89c555-1910-4a6b-98c8-1a2f8c809570" />
+<img width="381" height="225" alt="image" src="https://github.com/user-attachments/assets/4fb4dd3a-e2ee-4abf-9265-ab401a41be80" />
 
 
 # 2️⃣ 실습 과제
@@ -171,7 +236,8 @@ json_obj = """
   - print()를 이용해 데이터의 상단 5행(head)을 출력하세요.
 ```
 
-<!-- 이 부분을 지우고 인증 사진을 제출해주세요.-->
+<img width="1831" height="496" alt="image" src="https://github.com/user-attachments/assets/5a5d0232-85de-4e61-9759-de26722960e7" />
+
 
 
 
